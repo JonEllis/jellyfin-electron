@@ -1,0 +1,26 @@
+{
+  "name": "jellyfin-electron",
+  "version": "1.0.0",
+  "description": "An Electron interface for Jellyfin",
+  "main": "src/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonEllis/jellyfin-electron.git"
+  },
+  "keywords": [
+    "jellyfin",
+    "electron"
+  ],
+  "author": "Jon Ellis",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/JonEllis/jellyfin-electron/issues"
+  },
+  "homepage": "https://github.com/JonEllis/jellyfin-electron#readme",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^8.2.2"
+  }
+}
