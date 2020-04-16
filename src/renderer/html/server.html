@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Jellyfin Electron</title>
+
+    <link rel="stylesheet" href="../../../node_modules/reset-css/reset.css" />
+    <link rel="stylesheet" href="../../../node_modules/jellyfin-web/dist/themes/dark/theme.css" />
+    <link rel="stylesheet" href="../../../node_modules/jellyfin-web/dist/components/loading/loading.css" />
+    <link rel="stylesheet" href="../../../node_modules/jellyfin-web/dist/assets/css/fonts.css" />
+
+    <link rel="stylesheet" href="../../../node_modules/jellyfin-web/dist/elements/emby-input/emby-input.css" />
+    <link rel="stylesheet" href="../../../node_modules/jellyfin-web/dist/elements/emby-button/emby-button.css" />
+    <link rel="stylesheet" href="../../../node_modules/jellyfin-web/dist/elements/emby-checkbox/emby-checkbox.css" />
+
+
+    <!-- <link rel="stylesheet" href="../css/vendor.css" /> -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+
+  <body>
+    <div id="server-container" class="je-container">
+      <img class="logo" src="../images/jellyfin.svg" alt="Jellyfin" />
+      <hr />
+      <div id="server-form">
+        <input value="" id="server-url" class="emby-input" type="url" />
+        <button id="server-go" disabled class="button-submit emby-button block"><span>Go</span></button>
+      </div>
+      <div id="server-spinner" class="hidden">
+        <div class="docspinner mdl-spinner mdlSpinnerActive"><div class="mdl-spinner__layer mdl-spinner__layer-1 mdl-spinner__layer-1-active"><div class="mdl-spinner__circle-clipper mdl-spinner__left"><div class="mdl-spinner__circle mdl-spinner__circleLeft mdl-spinner__circleLeft-active"></div></div><div class="mdl-spinner__circle-clipper mdl-spinner__right"><div class="mdl-spinner__circle mdl-spinner__circleRight mdl-spinner__circleRight-active"></div></div></div><div class="mdl-spinner__layer mdl-spinner__layer-2 mdl-spinner__layer-2-active"><div class="mdl-spinner__circle-clipper mdl-spinner__left"><div class="mdl-spinner__circle mdl-spinner__circleLeft mdl-spinner__circleLeft-active"></div></div><div class="mdl-spinner__circle-clipper mdl-spinner__right"><div class="mdl-spinner__circle mdl-spinner__circleRight mdl-spinner__circleRight-active"></div></div></div><div class="mdl-spinner__layer mdl-spinner__layer-3 mdl-spinner__layer-3-active"><div class="mdl-spinner__circle-clipper mdl-spinner__left"><div class="mdl-spinner__circle mdl-spinner__circleLeft mdl-spinner__circleLeft-active"></div></div><div class="mdl-spinner__circle-clipper mdl-spinner__right"><div class="mdl-spinner__circle mdl-spinner__circleRight mdl-spinner__circleRight-active"></div></div></div><div class="mdl-spinner__layer mdl-spinner__layer-4 mdl-spinner__layer-4-active"><div class="mdl-spinner__circle-clipper mdl-spinner__left"><div class="mdl-spinner__circle mdl-spinner__circleLeft mdl-spinner__circleLeft-active"></div></div><div class="mdl-spinner__circle-clipper mdl-spinner__right"><div class="mdl-spinner__circle mdl-spinner__circleRight mdl-spinner__circleRight-active"></div></div></div></div>
+        <p>Validating server</p>
+    </div>
+
+    <script>
+      const {remote, ipcRenderer} = require('electron');
+      const config = require('../../config');
+
+      ipcRenderer.on('select-server-response', function(event, response) {
+        if (response[0] == false) {
+            alert(response[1]);
+        }
+
+        serverForm.classList.remove('hidden');
+        serverSpinner.classList.add('hidden');
+      });
+
+      var serverUrl = document.getElementById('server-url'),
+          serverGo = document.getElementById('server-go'),
+          serverForm = document.getElementById('server-form'),
+          serverSpinner = document.getElementById('server-spinner');
+
+      serverUrl.value = config.get('server') || '';
+
+      function validURL(str) {
+        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+          '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+          '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+          '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        return !!pattern.test(str);
+      }
+
+      function go() {
+        if (serverGo.disabled) {
+          return;
+        }
+
+        serverForm.classList.add('hidden');
+        serverSpinner.classList.remove('hidden');
+
+        result = ipcRenderer.send('select-server', serverUrl.value);
+      }
+
+      serverUrl.addEventListener('keyup', function(e) {
+        if (event.key === "Enter") {
+          go();
+        }
+
+        serverGo.disabled = !validURL(this.value);
+      });
+
+      serverGo.addEventListener('click', go);
+
+      serverGo.disabled = !validURL(serverUrl.value);
+    </script>
+  </body>
+</html>

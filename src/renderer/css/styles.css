@@ -1,0 +1,52 @@
+body, html {
+  height: 100%;
+  display: grid;
+  -webkit-app-region: drag
+}
+
+.hidden {
+  display: none;
+}
+
+#server-go:disabled {
+  background-color: #313235;
+  color: #202124;
+}
+
+#server-form {
+  -webkit-app-region: no-drag;
+}
+
+.je-container {
+  width: 60%;
+  margin: auto;
+}
+
+.je-container img {
+  width: 100%;
+}
+.je-container hr {
+  margin: 30px 0;
+  border: #00A4DC solid 1px;
+}
+.je-container p {
+  margin-top: 10px;
+}
+.je-container p:first-child {
+  margin-top: inherit;
+}
+.je-container .github {
+  padding-left: 20px;
+  background-image: url('../img/github.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+}
+
+#server-spinner .docspinner {
+  position: relative;
+  margin-top: 0;
+}
+
+#server-spinner p {
+  text-align: center;
+}
