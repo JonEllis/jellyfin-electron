@@ -2,6 +2,7 @@ const {app, globalShortcut} = require('electron');
 const config = require('./config');
 
 const ServerWindow = require('./windows/server');
+const PlayerWindow = require('./windows/player');
 
 let serverWindow;
 let playerWindow;
@@ -17,6 +18,7 @@ function createServerWindow() {
   serverWindow.on('server-selected', (serverUrl) => {
     config.set('server', serverUrl);
     createPlayerWindow();
+    serverWindow.hide();
   });
 
   serverWindow.on('closed', () => {
@@ -25,7 +27,21 @@ function createServerWindow() {
 }
 
 function createPlayerWindow() {
-  alert('creating player window');
+  if (playerWindow) {
+    playerWindow.show();
+    return;
+  }
+
+  playerWindow = new PlayerWindow();
+
+  playerWindow.on('closed', () => {
+    playerWindow = null;
+    createServerWindow();
+  });
+
+  playerWindow.on('new-track', (trackData) => {
+    // todo: show notifications
+  });
 }
 
 

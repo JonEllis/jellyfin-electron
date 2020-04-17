@@ -7,10 +7,16 @@ class ServerWindow extends EventEmitter {
   constructor() {
     super();
 
+    this.createWindow();
+    this.handleIpc();
+  }
+
+  createWindow() {
     this.window = new BrowserWindow({
       // icon: __dirname + '../renderer/icons/jellyfin.icns',
       width: 800,
       height: 600,
+      center: true,
       resizable: true,
       maximizable: false,
       fullscreenable: false,
@@ -22,12 +28,30 @@ class ServerWindow extends EventEmitter {
     });
 
     this.window.loadFile('src/renderer/html/server.html');
-    this.handleIpc();
+
+    this.window.on('closed', (...args) => {
+      this.window = null;
+      this.emit('closed', ...args);
+    });
+  }
+
+  show() {
+    this.window.show();
+  }
+
+  hide() {
+    this.window.hide();
   }
 
   handleIpc() {
     ipcMain.on('select-server', (event, serverUrl) => {
       serverUrl = serverUrl.replace(/\/+$/, '');
+
+      // todo: find a way to determine whether this is a Jellyfin server
+      event.reply('select-server-response', [true, 'success']);
+      this.emit('server-selected', serverUrl);
+      return;
+      // todo: then the above can be removed
 
       let pingURL = serverUrl + '/System/Ping';
 
