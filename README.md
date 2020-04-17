@@ -43,19 +43,19 @@ Hopefully I'll get some process set up to have some released binaries.
 Download this repository by whatever means you desire and change into the code's root directory:
 
 - Git clone it over SSH
-  ```
+  ``` shell
   git clone git@github.com:JonEllis/jellyfin-electron.git
   cd jellyfin-electron
   ```
 
 - Git clone it over HTTPS
-  ```
+  ``` shell
   git clone https://github.com/JonEllis/jellyfin-electron.git
   cd jellyfin-electron
   ```
 
 - Or download the zip archive file and extract it
-  ```
+  ``` shell
   wget https://github.com/JonEllis/jellyfin-electron/archive/master.zip -O jellyfin-electron.zip
   unzip jellyfin-electron.zip
   cd jellyfin-electron
@@ -65,13 +65,13 @@ Download this repository by whatever means you desire and change into the code's
 
 Install dependencies
 
-```
+``` shell
 npm install
 ```
 
 Run this like a standard Electron app
 
-```
+``` shell
 npm start
 ```
 
@@ -80,9 +80,21 @@ npm start
 The following command will attempt to build the Jellyfin Electron app for macOS, Windows and Linux.  
 The built binaries will be placed in the `release-builds` directory.
 
-```
+``` shell
 npm run build
 ```
+
+## Notes
+
+To make the Jellyfin header bar a dragable area to move the player window around with, add this snippet of CSS to the
+"Custom CSS" field under "General" settings:
+
+``` css
+.skinHeader { -webkit-app-region: drag; }
+.skinHeader button { -webkit-app-region: no-drag; }
+```
+
+The first line makes the header draggable, whilst the second makes buttons within the header not draggable.
 
 ## Contributing
 
