@@ -40,6 +40,7 @@ body, html {
   background-image: url('../images/github.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
+  -webkit-app-region: no-drag;
 }
 
 #server-spinner .docspinner {
