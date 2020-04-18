@@ -77,6 +77,8 @@ npm start
 
 ## Building
 
+(not done yet)
+
 The following command will attempt to build the Jellyfin Electron app for macOS, Windows and Linux.  
 The built binaries will be placed in the `release-builds` directory.
 
@@ -102,5 +104,9 @@ Pull requests are welcome. For Major changes, please open an issue first to disc
 
 ## TODO
 
+- Validate that the server URL is a Jellyfin server somehow
+- Bind/unbind global shortcuts based on preferences _when changed_
 - Test on Windows and Linux
 - Some sort of grown up testing (or, at this point, _any_ testing)
+- Write build scripts
+- Show track changed notifications
