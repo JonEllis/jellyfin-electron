@@ -3,6 +3,7 @@ const config = require('./config');
 
 const ServerWindow = require('./windows/server');
 const PlayerWindow = require('./windows/player');
+const AboutWindow = require('./windows/about');
 
 const ApplicationMenu = require('./menus/application');
 const DockMenu = require('./menus/dock');
@@ -12,6 +13,7 @@ let dockMenu;
 
 let serverWindow;
 let playerWindow;
+let aboutWindow;
 
 
 
@@ -54,6 +56,18 @@ function createPlayerWindow() {
   });
 }
 
+function createAboutWindow() {
+  if (aboutWindow) {
+    aboutWindow.show();
+    return;
+  }
+
+  aboutWindow = new AboutWindow();
+  aboutWindow.on('closed', () => {
+    aboutWindow = null;
+  });
+}
+
 
 
 // Create menus
@@ -76,6 +90,8 @@ function bindMenuEvents(menu) {
       playerWindow.hide();
     }
   });
+
+  menu.on('show-about-window', createAboutWindow);
 
   menu.on('playback-command', (command) => {
     if (playerWindow) {
