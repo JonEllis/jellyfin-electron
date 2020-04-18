@@ -54,7 +54,9 @@ function createPlayerWindow() {
   });
 
   playerWindow.on('new-track', (trackData) => {
-    // todo: show notifications
+    if (config.get('showNotifications')) {
+      // todo: show notifications
+    }
   });
 }
 
