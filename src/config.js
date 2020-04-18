@@ -4,7 +4,7 @@ let schema = {
   server: {
     type: 'string',
     format: 'url',
-    default: 'https://app.emby.media/'
+    default: ''
   },
   startWithServerWindow: {
     type: 'boolean',
