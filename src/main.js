@@ -3,6 +3,7 @@ const config = require('./config');
 
 const ServerWindow = require('./windows/server');
 const PlayerWindow = require('./windows/player');
+const PreferencesWindow = require('./windows/preferences');
 const AboutWindow = require('./windows/about');
 
 const ApplicationMenu = require('./menus/application');
@@ -13,6 +14,7 @@ let dockMenu;
 
 let serverWindow;
 let playerWindow;
+let preferencesWindow;
 let aboutWindow;
 
 
@@ -56,6 +58,19 @@ function createPlayerWindow() {
   });
 }
 
+function createPreferencesWindow() {
+  if (preferencesWindow) {
+    preferencesWindow.show();
+    return;
+  }
+
+  preferencesWindow = new PreferencesWindow(config);
+
+  preferencesWindow.on('closed', function () {
+    preferencesWindow = null;
+  });
+}
+
 function createAboutWindow() {
   if (aboutWindow) {
     aboutWindow.show();
@@ -91,6 +106,8 @@ function bindMenuEvents(menu) {
     }
   });
 
+  menu.on('show-preferences-window', createPreferencesWindow);
+
   menu.on('show-about-window', createAboutWindow);
 
   menu.on('playback-command', (command) => {
@@ -102,20 +119,69 @@ function bindMenuEvents(menu) {
 
 
 
+// Global shortcuts
+
+function unbindGlobalShortcuts() {
+  globalShortcut.unregister('MediaStop');
+  globalShortcut.unregister('MediaPlayPause');
+  globalShortcut.unregister('MediaNextTrack');
+  globalShortcut.unregister('MediaPreviousTrack');
+}
+
+function bindGlobalShortcuts() {
+  globalShortcut.register('MediaStop', function() {
+    if (playerWindow) {
+      playerWindow.sendPlaybackCommand('stop');
+    }
+  });
+
+  globalShortcut.register('MediaPlayPause', function() {
+    if (playerWindow) {
+      playerWindow.sendPlaybackCommand('playPause');
+    }
+  });
+
+  globalShortcut.register('MediaNextTrack', function() {
+    if (playerWindow) {
+      playerWindow.sendPlaybackCommand('nextTrack');
+    }
+  });
+
+  globalShortcut.register('MediaPreviousTrack', function() {
+    if (playerWindow) {
+      playerWindow.sendPlaybackCommand('previousTrack');
+    }
+  });
+}
+
+
+
 // App setup
 
 app.on('ready', () => {
   createDockMenu();
   createApplicationMenu();
-  createServerWindow();
+
+  if (!config.get('startWithServerWindow') && config.get('server')) {
+    createPlayerWindow();
+  } else {
+    createServerWindow();
+  }
+
+  if (config.get('bindMediaKeys')) {
+    bindGlobalShortcuts();
+  }
 });
 
 app.on('window-all-closed', () => {
+  unbindGlobalShortcuts();
   app.quit();
 });
 
 app.on('activate', () => {
-  if (serverWindow === null) {
+  if (!config.get('startWithServerWindow') && config.get('server')) {
+    createPlayerWindow();
+  } else {
     createServerWindow();
   }
 });

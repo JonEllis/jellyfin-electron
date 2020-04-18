@@ -1,7 +1,7 @@
 const Store = require('electron-store');
 
 let schema = {
-  lastServer: {
+  server: {
     type: 'string',
     format: 'url',
     default: 'https://app.emby.media/'

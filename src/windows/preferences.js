@@ -1,7 +1,7 @@
 const {BrowserWindow} = require('electron');
 const EventEmitter = require('events');
 
-class AboutWindow extends EventEmitter {
+class PreferencesWindow extends EventEmitter {
 
   constructor() {
     super();
@@ -11,17 +11,21 @@ class AboutWindow extends EventEmitter {
   createWindow() {
     this.window = new BrowserWindow({
       // icon: __dirname + '../renderer/icons/emby.icns',
-      width: 525,
-      height: 350,
+      width: 1600,
+      height: 600,
       center: true,
-      resizable: false,
       maximizable: false,
       fullscreenable: false,
       backgroundColor: '#101010',
-      titleBarStyle: 'hiddenInset'
+      titleBarStyle: 'hiddenInset',
+      webPreferences: {
+        nodeIntegration: true,
+      }
     });
 
-    this.window.loadFile('src/renderer/html/about.html');
+    this.window.webContents.openDevTools();
+
+    this.window.loadFile('src/renderer/html/preferences.html');
 
     this.window.on('closed', (...args) => {
       this.window = null;
@@ -39,4 +43,4 @@ class AboutWindow extends EventEmitter {
 
 }
 
-module.exports = AboutWindow;
+module.exports = PreferencesWindow;
