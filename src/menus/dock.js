@@ -13,7 +13,7 @@ class DockMenu extends JellyfinMenu {
       {
         label: 'Show Server Window',
         click: () => {
-          self.emit('show-server-window');
+          this.emit('show-server-window');
         }
       },
       this.createPlaybackMenuTemplate()

@@ -17,8 +17,8 @@ class ApplicationMenu extends JellyfinMenu {
         submenu: [
           {
             label: 'About ' + app.getName(),
-            click: function() {
-              self.emit('show-about-window');
+            click: () => {
+              this.emit('show-about-window');
             }
           },
           {
@@ -27,8 +27,8 @@ class ApplicationMenu extends JellyfinMenu {
           {
             label: 'Preferences',
             accelerator: 'Super+,',
-            click: function() {
-              self.emit('show-preferences-window');
+            click: () => {
+              this.emit('show-preferences-window');
             }
           },
           {
@@ -36,8 +36,8 @@ class ApplicationMenu extends JellyfinMenu {
           },
           {
             label: 'Show Server Window',
-            click: function() {
-              self.emit('show-server-window');
+            click: () => {
+              this.emit('show-server-window');
             }
           },
           {
@@ -46,7 +46,7 @@ class ApplicationMenu extends JellyfinMenu {
           {
             label: 'Quit ' + app.getName(),
             accelerator: 'Super+Q',
-            click: function() {
+            click: () => {
               app.quit();
             }
           }
@@ -62,7 +62,7 @@ class ApplicationMenu extends JellyfinMenu {
         submenu: [
           {
             label: 'View on GitHub',
-            click: function() {
+            click: () => {
               shell.openExternalSync('https://github.com/JonEllis/jellyfin-electron');
             }
           }
