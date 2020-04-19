@@ -9,14 +9,14 @@ class ApplicationMenu extends JellyfinMenu {
   }
 
   createMenu() {
-    let mainMenuName = process.platform === 'darwin' ? app.getName() : 'File';
+    let mainMenuName = process.platform === 'darwin' ? app.name : 'File';
 
     let menu = Menu.buildFromTemplate([
       {
         label: mainMenuName,
         submenu: [
           {
-            label: 'About ' + app.getName(),
+            label: 'About ' + app.name,
             click: () => {
               this.emit('show-about-window');
             }
@@ -44,7 +44,7 @@ class ApplicationMenu extends JellyfinMenu {
             type:'separator'
           },
           {
-            label: 'Quit ' + app.getName(),
+            label: 'Quit ' + app.name,
             accelerator: 'Super+Q',
             click: () => {
               app.quit();
