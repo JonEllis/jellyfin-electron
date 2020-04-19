@@ -9,6 +9,8 @@ const AboutWindow = require('./windows/about');
 const ApplicationMenu = require('./menus/application');
 const DockMenu = require('./menus/dock');
 
+const notifyTrackChange = require('./utilities/notifications');
+
 let applicationMenu;
 let dockMenu;
 
@@ -55,7 +57,7 @@ function createPlayerWindow() {
 
   playerWindow.on('new-track', (trackData) => {
     if (config.get('showNotifications')) {
-      // todo: show notifications
+      notifyTrackChange(trackData);
     }
   });
 }
