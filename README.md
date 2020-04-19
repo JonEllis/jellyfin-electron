@@ -109,4 +109,3 @@ Pull requests are welcome. For Major changes, please open an issue first to disc
 - Test on Windows and Linux
 - Some sort of grown up testing (or, at this point, _any_ testing)
 - Write build scripts
-- Show track changed notifications
