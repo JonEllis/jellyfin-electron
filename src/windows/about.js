@@ -10,7 +10,6 @@ class AboutWindow extends EventEmitter {
 
   createWindow() {
     this.window = new BrowserWindow({
-      // icon: __dirname + '../renderer/icons/emby.icns',
       width: 525,
       height: 350,
       center: true,

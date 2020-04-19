@@ -13,7 +13,6 @@ class ServerWindow extends EventEmitter {
 
   createWindow() {
     this.window = new BrowserWindow({
-      // icon: __dirname + '../renderer/icons/jellyfin.icns',
       width: 800,
       height: 600,
       center: true,

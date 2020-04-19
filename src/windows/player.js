@@ -19,7 +19,6 @@ class PlayerWindow extends EventEmitter {
     let display = electron.screen.getPrimaryDisplay();
 
     this.window = new BrowserWindow({
-      // icon: __dirname + '../renderer/icons/emby.icns',
       useContentSize: true,
       backgroundColor: '#101010',
       width: display.bounds.width * 0.75,

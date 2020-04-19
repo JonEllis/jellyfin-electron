@@ -10,7 +10,6 @@ class PreferencesWindow extends EventEmitter {
 
   createWindow() {
     this.window = new BrowserWindow({
-      // icon: __dirname + '../renderer/icons/emby.icns',
       width: 1600,
       height: 600,
       center: true,
