@@ -102,10 +102,11 @@ Pull requests are welcome. For Major changes, please open an issue first to disc
 
 ## TODO
 
-- Validate that the server URL is a Jellyfin server somehow
-- Bind/unbind global shortcuts based on preferences _when changed_
 - Test on Windows and Linux
+- Validate that the server URL is a Jellyfin server some how
+- Bind/unbind global shortcuts based on preferences _when changed_
 - Some sort of grown up testing (or, at this point, _any_ testing)
+- Options for showing the titlebar so window chrome doesn't overlap player contents
 
 ## Screenshots
 
