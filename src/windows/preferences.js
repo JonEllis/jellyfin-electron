@@ -22,8 +22,6 @@ class PreferencesWindow extends EventEmitter {
       }
     });
 
-    this.window.webContents.openDevTools();
-
     this.window.loadFile('src/renderer/html/preferences.html');
 
     this.window.on('closed', (...args) => {
