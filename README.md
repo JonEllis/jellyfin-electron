@@ -61,13 +61,18 @@ Download this repository by whatever means you desire and change into the code's
   cd jellyfin-electron
   ```
 
-## Run for development
+## Dependencies
 
-Install dependencies
+The main dependency that the project won't fetch itself is `npm`.
+See the [npm installation docs](https://www.npmjs.com/get-npm) for how to do that.
+
+Once you have npm, you can install all the other dependencies:
 
 ``` shell
 npm install
 ```
+
+## Run for development
 
 Run this like a standard Electron app
 
@@ -77,11 +82,25 @@ npm start
 
 ## Building
 
-The following command will attempt to build the Jellyfin Electron app for macOS, Windows and Linux.  
+Before you can build, the Jellyfin icon must be converted into the appropriate formats:
+
+``` shell
+npm run convert-icon
+```
+
+Then the following command will attempt to build the Jellyfin Electron app for macOS, Windows and Linux.  
 The built binaries will be placed in the `release-builds` directory.
 
 ``` shell
-npm run build
+npm run build-all
+```
+
+If you only want to build for a particular platform, then you can run the platform-specific build script on it's own:
+
+``` shell
+npm run build-linux
+npm run build-macos
+npm run build-windows
 ```
 
 ## Notes
