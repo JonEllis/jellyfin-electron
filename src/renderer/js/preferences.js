@@ -3,8 +3,6 @@ const config = require('../../config');
 function renderCheckbox(setting, label) {
   let checkedAttr = config.get(setting) ? 'checked' : '';
 
-  console.log('get', setting, config.get(setting));
-
   let el = document.createElement('div');
   el.innerHTML = [
     '<label class="emby-checkbox-label">',

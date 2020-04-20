@@ -4,7 +4,6 @@ let schema = {
   server: {
     type: 'string',
     format: 'url',
-    default: ''
   },
   startWithServerWindow: {
     type: 'boolean',

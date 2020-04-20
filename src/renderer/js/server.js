@@ -15,7 +15,7 @@ var serverUrl = document.getElementById('server-url'),
     serverForm = document.getElementById('server-form'),
     serverSpinner = document.getElementById('server-spinner');
 
-serverUrl.value = config.get('server') || '';
+serverUrl.value = config.get('server', '');
 
 function validURL(str) {
   var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
