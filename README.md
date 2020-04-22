@@ -58,7 +58,7 @@ Download this repository by whatever means you desire and change into the code's
   ``` shell
   wget https://github.com/JonEllis/jellyfin-electron/archive/master.zip -O jellyfin-electron.zip
   unzip jellyfin-electron.zip
-  cd jellyfin-electron
+  cd jellyfin-electron-master
   ```
 
 ## Dependencies
