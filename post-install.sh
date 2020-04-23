@@ -5,3 +5,6 @@
 cd node_modules/jellyfin-web
 yarn install
 yarn build:production
+
+cd -
+./convert-icon.sh
