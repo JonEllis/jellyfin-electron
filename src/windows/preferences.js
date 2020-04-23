@@ -10,9 +10,10 @@ class PreferencesWindow extends EventEmitter {
 
   createWindow() {
     this.window = new BrowserWindow({
-      width: 1600,
+      width: 800,
       height: 600,
       center: true,
+      resizable: false,
       maximizable: false,
       fullscreenable: false,
       backgroundColor: '#101010',
