@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/JonEllis/jellyfin-electron#readme",
   "scripts": {
+    "postinstall": "./post-install.sh",
     "start": "electron .",
+    "fetch-jellyfin-web": "./fetch-jellyfin-web.sh",
     "convert-icon": "./convert-icon.sh",
     "build-all": "./build-all.sh",
     "build-linux": "./build-linux.sh",

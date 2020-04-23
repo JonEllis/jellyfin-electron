@@ -29,8 +29,8 @@ work well.
 ### [jellyfin-react-client](https://github.com/jellyfin/jellyfin-react-client)
 
 This appears to be the replacement for the Jellyfin Theater application.
-I expect that this application will be a better successor to this repository, but only has the functionality to login to a
-Jellyfin server so far.
+I expect that this application will be a better successor to this repository, but only has the functionality to login to
+a Jellyfin server so far.
 I would like to be able to control my media using media keys sooner than wait for this project to see completion.
 
 ## Installation
@@ -63,13 +63,15 @@ Download this repository by whatever means you desire and change into the code's
 
 ## Dependencies
 
-The main dependency that the project won't fetch itself is `npm`.
-See the [npm installation docs](https://www.npmjs.com/get-npm) for how to do that.
+The main dependencies that the project won't fetch itself are `node`, `yarn` and `git`.
 
-Once you have npm, you can install all the other dependencies:
+You will need node at least version 10, see the
+[installation docs](https://github.com/nodesource/distributions/blob/master/README.md) for installing node 10.
+
+See the [Yarn installation documentation](https://classic.yarnpkg.com/en/docs/install) for how to install Yarn.
 
 ``` shell
-npm install
+yarn install
 ```
 
 ## Run for development
@@ -77,7 +79,7 @@ npm install
 Run this like a standard Electron app
 
 ``` shell
-npm start
+yarn start
 ```
 
 ## Building
@@ -85,22 +87,22 @@ npm start
 Before you can build, the Jellyfin icon must be converted into the appropriate formats:
 
 ``` shell
-npm run convert-icon
+yarn run convert-icon
 ```
 
 Then the following command will attempt to build the Jellyfin Electron app for macOS, Windows and Linux.  
 The built binaries will be placed in the `release-builds` directory.
 
 ``` shell
-npm run build-all
+yarn run build-all
 ```
 
 If you only want to build for a particular platform, then you can run the platform-specific build script on it's own:
 
 ``` shell
-npm run build-linux
-npm run build-macos
-npm run build-windows
+yarn run build-linux
+yarn run build-macos
+yarn run build-windows
 ```
 
 ## Notes
