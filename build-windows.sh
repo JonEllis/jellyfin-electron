@@ -7,7 +7,7 @@ output_dir="release-builds"
 icon="$project_dir/icons/win/icon.ico"
 
 if [ ! -f "$icon" ]; then
-  echo "Convert the Jellyfin icon with 'npm run convert-icon' first"
+  echo "Convert the Jellyfin icon with 'yarn run convert-icon' first"
   exit 1
 fi
 
