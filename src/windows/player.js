@@ -26,6 +26,7 @@ class PlayerWindow extends EventEmitter {
       center: true,
       titleBarStyle: 'hiddenInset',
       icon: nativeImage.createFromPath(__dirname + '/../../icons/png/128x128.png'),
+      autoHideMenuBar: true,
       webPreferences: {
         nodeIntegration: false,
         preload: path.join(__dirname, '../renderer/js/integration.js')
