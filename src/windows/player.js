@@ -1,5 +1,5 @@
 const electron = require('electron');
-const {BrowserWindow, ipcMain} = require('electron');
+const {BrowserWindow, ipcMain, nativeImage} = require('electron');
 const EventEmitter = require('events');
 const config = require('../config');
 const path = require('path');
@@ -25,6 +25,7 @@ class PlayerWindow extends EventEmitter {
       height: display.bounds.height * 0.75,
       center: true,
       titleBarStyle: 'hiddenInset',
+      icon: nativeImage.createFromPath(__dirname + '/../../icons/png/128x128.png'),
       webPreferences: {
         nodeIntegration: false,
         preload: path.join(__dirname, '../renderer/js/integration.js')

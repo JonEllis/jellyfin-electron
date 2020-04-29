@@ -1,4 +1,4 @@
-const {BrowserWindow} = require('electron');
+const {BrowserWindow, nativeImage} = require('electron');
 const EventEmitter = require('events');
 
 class AboutWindow extends EventEmitter {
@@ -17,7 +17,8 @@ class AboutWindow extends EventEmitter {
       maximizable: false,
       fullscreenable: false,
       backgroundColor: '#101010',
-      titleBarStyle: 'hiddenInset'
+      titleBarStyle: 'hiddenInset',
+      icon: nativeImage.createFromPath(__dirname + '/../../icons/png/128x128.png'),
     });
 
     this.window.setMenu(null);

@@ -1,4 +1,4 @@
-const {BrowserWindow} = require('electron');
+const {BrowserWindow, nativeImage} = require('electron');
 const EventEmitter = require('events');
 
 class PreferencesWindow extends EventEmitter {
@@ -18,6 +18,7 @@ class PreferencesWindow extends EventEmitter {
       fullscreenable: false,
       backgroundColor: '#101010',
       titleBarStyle: 'hiddenInset',
+      icon: nativeImage.createFromPath(__dirname + '/../../icons/png/128x128.png'),
       webPreferences: {
         nodeIntegration: true,
       }
