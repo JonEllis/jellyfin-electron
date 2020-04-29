@@ -163,7 +163,10 @@ function bindGlobalShortcuts() {
 // App setup
 
 app.on('ready', () => {
-  createDockMenu();
+  if (process.platform === 'darwin') {
+    createDockMenu();
+  }
+
   createApplicationMenu();
 
   if (!config.get('startWithServerWindow') && config.get('server')) {
