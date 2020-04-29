@@ -84,12 +84,6 @@ yarn start
 
 ## Building
 
-Before you can build, the Jellyfin icon must be converted into the appropriate formats:
-
-``` shell
-yarn run convert-icon
-```
-
 Then the following command will attempt to build the Jellyfin Electron app for macOS, Windows and Linux.  
 The built binaries will be placed in the `release-builds` directory.
 
