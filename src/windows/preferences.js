@@ -23,6 +23,7 @@ class PreferencesWindow extends EventEmitter {
       }
     });
 
+    this.window.setMenu(null);
     this.window.loadFile('src/renderer/html/preferences.html');
 
     this.window.on('closed', (...args) => {

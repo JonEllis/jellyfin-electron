@@ -20,6 +20,7 @@ class AboutWindow extends EventEmitter {
       titleBarStyle: 'hiddenInset'
     });
 
+    this.window.setMenu(null);
     this.window.loadFile('src/renderer/html/about.html');
 
     this.window.on('closed', (...args) => {

@@ -26,6 +26,7 @@ class ServerWindow extends EventEmitter {
       }
     });
 
+    this.window.setMenu(null);
     this.window.loadFile('src/renderer/html/server.html');
 
     this.window.on('closed', (...args) => {
