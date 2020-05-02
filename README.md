@@ -13,7 +13,7 @@ I've worked on some other JS projects recently.
 
 I am aware of some official alternatives to this project.
 
-### [Jellyfin Theater](https://github.com/jellyfin/jellyfin-theater-electron)  
+### [Jellyfin Desktop](https://github.com/jellyfin/jellyfin-desktop)  
 
 I found this to have some significant problems when I attempted to build and run it myself - on macOS, I've not tried it
 on other platforms.
@@ -23,8 +23,7 @@ It seemed to not want to stay still, and would place itself annoyingly off scree
 the window accessible to grab the handles.
 Then [dragging and moving the window](https://github.com/jellyfin/jellyfin-theater-electron/issues/28) is problematic.
 
-The project has not been updated since August 2019, which in itself is not a problem if the project itself seemed to
-work well.
+The project had not been updated since August 2019 at the time of writing, but it seems to have picked up again since.
 
 ### [jellyfin-react-client](https://github.com/jellyfin/jellyfin-react-client)
 
