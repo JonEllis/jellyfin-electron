@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-project_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+bin_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+project_dir="$bin_dir/../"
 project_name="Jellyfin Electron"
-output_dir="release-builds"
+output_dir="$project_dir/release-builds"
 icon="$project_dir/icons/mac/icon.icns"
 
 if [ ! -f "$icon" ]; then

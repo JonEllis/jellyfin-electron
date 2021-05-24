@@ -18,24 +18,22 @@
   },
   "homepage": "https://github.com/JonEllis/jellyfin-electron#readme",
   "scripts": {
-    "postinstall": "./post-install.sh",
+    "postinstall": "bin/post-install.sh",
     "start": "electron .",
-    "fetch-jellyfin-web": "./fetch-jellyfin-web.sh",
-    "convert-icon": "./convert-icon.sh",
-    "build-all": "./build-all.sh",
-    "build-linux": "./build-linux.sh",
-    "build-macos": "./build-macos.sh",
-    "build-windows": "./build-windows.sh"
+    "build-all": "bin/build-all.sh",
+    "build-linux": "bin/build-linux.sh",
+    "build-macos": "bin/build-macos.sh",
+    "build-windows": "bin/build-windows.sh"
   },
   "dependencies": {
     "electron-store": "^5.1.1",
-    "got": "^10.7.0",
-    "jellyfin-web": "github:jellyfin/jellyfin-web",
-    "reset-css": "^5.0.1"
+    "got": "^10.7.0"
   },
   "devDependencies": {
     "electron": "^9.4.0",
     "electron-icon-maker": "0.0.4",
-    "electron-packager": "^14.2.1"
+    "electron-packager": "^14.2.1",
+    "jellyfin-web": "github:jellyfin/jellyfin-web",
+    "reset-css": "^5.0.1"
   }
 }

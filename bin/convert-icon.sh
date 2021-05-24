@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-project_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+set -e
+
+bin_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+project_dir="$bin_dir/../"
 
 rm -f "$project_dir/icons/mac/icon.icns"
 rm -f "$project_dir/icons/png/"*.png
