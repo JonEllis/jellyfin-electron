@@ -30,7 +30,7 @@
     "got": "^10.7.0"
   },
   "devDependencies": {
-    "electron": "^11.5.0",
+    "electron": "^15.5.5",
     "electron-icon-maker": "0.0.4",
     "electron-packager": "^14.2.1",
     "jellyfin-web": "github:jellyfin/jellyfin-web",
